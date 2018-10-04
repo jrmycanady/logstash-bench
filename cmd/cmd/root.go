@@ -68,7 +68,7 @@ func run(cmd *cobra.Command, args []string) {
 		log.SetOutput(ioutil.Discard)
 	}
 
-	fmt.Println("starting run")
+	log.Print("starting run")
 	r, err := bench.Exec(cfg)
 	if err != nil {
 		fmt.Println(err)
