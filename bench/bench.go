@@ -157,7 +157,7 @@ func Exec(cfg RunCfg) (Result, error) {
 		Duration:              completeTime.Sub(l.ProcessedAt),
 		InputFileSize:         sfi.Size(),
 		OutputFileSize:        fi.Size(),
-		FileSizePercentChange: float64(fi.Size()-sfi.Size()) / float64(sfi.Size()),
+		FileSizePercentChange: float64(fi.Size()-sfi.Size()) / float64(sfi.Size()) * 100.0,
 	}, nil
 }
 
@@ -176,7 +176,7 @@ type Result struct {
 }
 
 func (r Result) Screen() string {
-	return fmt.Sprintf("Filter File: %s\nProcesssing Started: %s\nProcessing Ended: %s\nDuration: %d\nInput File Size: %d\nOutput File Size: %d\nFile Size Change Factor: %v", r.FilterFile, r.FirstProcessedAt.Format(time.RFC3339), r.LastProcessedAt.Format(time.RFC3339), r.Duration.Seconds(), r.InputFileSize, r.OutputFileSize, r.FileSizePercentChange)
+	return fmt.Sprintf("Filter File: %s\nProcesssing Started: %s\nProcessing Ended: %s\nDuration: %0.4f\nInput File Size: %d\nOutput File Size: %d\nFile Size Change Percentage: %0.2f", r.FilterFile, r.FirstProcessedAt.Format(time.RFC3339), r.LastProcessedAt.Format(time.RFC3339), r.Duration.Seconds(), r.InputFileSize, r.OutputFileSize, r.FileSizePercentChange)
 }
 
 // cleanupTempDir cleans up the directory specified by path.
