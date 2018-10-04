@@ -1,2 +1,3 @@
 logstash-bench-linux-x64
 logstash-bin-darwin-x64
+send.sh
