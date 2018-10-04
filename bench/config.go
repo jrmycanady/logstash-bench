@@ -48,9 +48,9 @@ func FilterFromFile(path string) (string, error) {
 
 	for s.Scan() {
 		t := s.Text()
-		if t == "\n" || t == "\r" {
-			continue
-		}
+		// if t == "\n" || t == "\r" {
+		// 	continue
+		// }
 		output.WriteString(t)
 		if s.Text() == "{" && !found {
 			found = true

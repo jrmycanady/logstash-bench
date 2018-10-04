@@ -41,14 +41,14 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().StringVarP(&inputCodec, "input-codec", "c", "json", "The codec logstash should use on input.")
-	rootCmd.Flags().StringVarP(&sourceFilePath, "source-file-path", "s", "./input.log", "The path to the input source file.")
-	rootCmd.Flags().StringVarP(&tempDirPath, "temp-dir-path", "t", "/dev/shm/", "The path to a readable and writable directory for temporary file storage.")
-	rootCmd.Flags().Int64VarP(&numWorkers, "number-of-workers", "w", 1, "The number of workers to start logstash with.")
-	rootCmd.Flags().Int64VarP(&numIterations, "number-of-iterations", "i", 1, "The number of time the test should be ran.")
-	rootCmd.Flags().StringVarP(&logstashPath, "logstash-executable-path", "l", "/usr/share/logstash/bin/logstash", "The path to the logstash executable.")
-	rootCmd.Flags().StringVarP(&filterFilePath, "filter-file-path", "f", "./filter.conf", "The path to the filter to test.")
-	rootCmd.Flags().BoolVarP(&details, "details", "d", false, "Shows details of the process on stdout.")
+	rootCmd.PersistentFlags().StringVarP(&inputCodec, "input-codec", "c", "json", "The codec logstash should use on input.")
+	rootCmd.PersistentFlags().StringVarP(&sourceFilePath, "source-file-path", "s", "./input.log", "The path to the input source file.")
+	rootCmd.PersistentFlags().StringVarP(&tempDirPath, "temp-dir-path", "t", "/dev/shm/", "The path to a readable and writable directory for temporary file storage.")
+	rootCmd.PersistentFlags().Int64VarP(&numWorkers, "number-of-workers", "w", 1, "The number of workers to start logstash with.")
+	rootCmd.PersistentFlags().Int64VarP(&numIterations, "number-of-iterations", "i", 1, "The number of time the test should be ran.")
+	rootCmd.PersistentFlags().StringVarP(&logstashPath, "logstash-executable-path", "l", "/usr/share/logstash/bin/logstash", "The path to the logstash executable.")
+	rootCmd.PersistentFlags().StringVarP(&filterFilePath, "filter-file-path", "f", "./filter.conf", "The path to the filter to test.")
+	rootCmd.PersistentFlags().BoolVarP(&details, "details", "d", false, "Shows details of the process on stdout.")
 }
 
 func run(cmd *cobra.Command, args []string) {
